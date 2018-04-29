@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="calculatrice2.css">
+    <title>Calculatrice en JS</title>
+</head>
+
+<body>
+    <div id="calculator">
+        <center>
+            <header>
+                <div id="titrecalc">
+                    <h1>Casio Instrument</h1>
+                    <div id="subtitlecalc">FX-TI-92</div>
+                    <div id="affichage">
+                    </div>
+                </div>
+            </header>
+        </center>
+        <div id=keycalc>
+            <center>
+                <table>
+                    <tr>
+                        <td><input type="button" class="btcalc" value="7" onclick="writeOperation(7)"></td>
+                        <td><input type="button" class="btcalc" value="8" onclick="writeOperation(8)"></td>
+                        <td><input type="button" class="btcalc" value="9" onclick="writeOperation(9)"></td>
+                        <td><input type="button" class="btcalc" value="+" onclick="writeOperation('+')"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" class="btcalc" value="4" onclick="writeOperation(4)"></td>
+                        <td><input type="button" class="btcalc" value="5" onclick="writeOperation(5)"></td>
+                        <td><input type="button" class="btcalc" value="6" onclick="writeOperation(6)"></td>
+                        <td><input type="button" class="btcalc" value="-" onclick="writeOperation('-')"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" class="btcalc" value="1" onclick="writeOperation(1)"></td>
+                        <td><input type="button" class="btcalc" value="2" onclick="writeOperation(2)"></td>
+                        <td><input type="button" class="btcalc" value="3" onclick="writeOperation(3)"></td>
+                        <td><input type="button" class="btcalc" value="*" onclick="writeOperation('*')"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" class="btcalc" value="C" onclick="clearCalc()"></td>
+                        <td><input type="button" class="btcalc" value="0" onclick="writeOperation(0)"></td>
+                        <td><input type="button" class="btcalc" value="=" onclick="calculator()"></td>
+                        <td><input type="button" class="btcalc" value="/" onclick="writeOperation('/')"></td>
+                    </tr>
+                </table>
+            </center>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var number1 = "";
+        var number2 = "";
+        var operator = null;
+        var affCalc = "";
+        var operators = ['+', '-', '*', '/'];
+
+        function writeOperation(character) {
+            if (character in operators) {
+                operator = character;
+            } else {
+                if (operator == null) {
+                    number1 = number1 + character;
+                } else {
+                    number2 = number2 + character;
+                }
+            }
+            affCalc = affCalc + character;
+            document.getElementById("affichage").innerHTML = affCalc;
+        }
+
+        function calculator() {
+            result = eval(affCalc);
+            document.getElementById("affichage").innerHTML = result;
+            number1 = "";
+            number2 = "";
+            affCalc = "";
+        }
+
+        function clearCalc() {
+            number1 = "";
+            number2 = "";
+            affCalc = "";
+            document.getElementById("affichage").innerHTML = "";
+        }
+
+    </script>
+</body>
+
+</html>

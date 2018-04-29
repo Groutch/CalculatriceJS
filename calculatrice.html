@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Calculatrice en JS</title>
+</head>
+
+<body>
+    <center>
+        <div id="bloc_page">
+            <header>
+                <div id="titre_principal">
+                    <h1>Calculatrice</h1>
+                </div>
+            </header>
+            <h1><div id="resultdiv"></div></h1>
+            <form autocomplete="off" name="formulaire">
+                <p><input name="nombre1" type="number"></p>
+                <select name="choix">
+                    <option value="add">+</option>
+                    <option value="sub">-</option>
+                    <option value="divide">/</option>
+                    <option value="mult">*</option>
+                </select>
+                <p><input name="nombre2" type="number"></p>
+                <input type="button" value="calculer" onclick="calculator()">
+                <input type="reset" value="effacer" onclick=clearCalc()><br>
+            </form>
+        </div>
+    </center>
+    <script type="text/javascript">
+        function calculator() {
+            var result = 0;
+            var num1 = document.forms["formulaire"].elements["nombre1"].value;
+            var num2 = document.forms["formulaire"].elements["nombre2"].value;
+            switch (document.forms["formulaire"].elements["choix"].value) {
+                case "add":
+                    result = Number(num1) + Number(num2);
+                    break;
+                case "sub":
+                    result = Number(num1) - Number(num2);
+                    break;
+                case "divide":
+                    result = Number(num1) / Number(num2);
+                    break;
+                case "mult":
+                    result = Number(num1) * Number(num2);
+                    break;
+            }
+            document.getElementById("resultdiv").innerHTML=result; 
+            
+        }
+
+        function clearCalc() {
+            document.forms["formulaire"].elements["nombre1"].value = "";
+            document.forms["formulaire"].elements["nombre2"].value = "";
+        }
+    </script>
+</body>
+
+</html>
